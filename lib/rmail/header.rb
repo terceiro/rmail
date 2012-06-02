@@ -630,7 +630,7 @@ module RMail
     # Set the boundary parameter of this message's Content-Type:
     # field.
     def set_boundary(boundary)
-      params = params_quoted('content-type')
+      params = params('content-type')
       params ||= {}
       params['boundary'] = boundary
       content_type = content_type()
