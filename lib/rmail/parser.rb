@@ -213,15 +213,17 @@ module RMail
           # headers.  The body part starts directly after this
           # newline.
           rest = data[1..-1]
+        elsif data[0] == ?\r && data[1] == ?\n
+          rest = data[2..-1]
         else
-          header, rest = data.split(/\n\n/, 2)
+          header, rest = data.split(/\r?\n\r?\n/, 2)
         end
         break if rest
       end
       input.pushback(rest)
       if header
         mime = false
-        fields = header.split(/\n(?!\s)/)
+        fields = header.split(/\r?\n(?!\s)/)
         if fields.first =~ /^From /
           @handler.mbox_from(fields.first)
           fields.shift
