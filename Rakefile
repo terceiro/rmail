@@ -34,7 +34,7 @@ def can_release_package
   reasons = []
 
   unless news_is_current
-    reasons << 'the NEWS file is not current'
+    reasons << 'the ChangeLog file is not current'
   end
 
   unless defined?(Gem)
@@ -63,11 +63,11 @@ def can_release_package
   can_release_package
 end
 
-# Is the NEWS file current?
+# Is ChangeLog current?
 def news_is_current
   today = Time.now.strftime('%Y-%m-%d')
   version = Regexp.new(Regexp.quote(PKG_VERSION))
-  if IO.readlines('NEWS').first =~
+  if IO.readlines('ChangeLog').first =~
       /= Changes in RubyMail #{PKG_VERSION} \(released #{today}\)$/
     true
   else
@@ -86,7 +86,7 @@ PKG_FILES = FileList.new('test/**/*',
                          'guide/**/*',
                          'lib/**/*',
                          'install.rb',
-                         'NEWS',
+                         'ChangeLog',
                          'NOTES',
                          'README',
                          'THANKS',
@@ -98,7 +98,7 @@ PKG_FILES = FileList.new('test/**/*',
 #
 rdoc = Rake::RDocTask.new do |rdoc|
   rdoc.main = 'README'
-  rdoc.rdoc_files.include("README", "NEWS", "THANKS",
+  rdoc.rdoc_files.include("README", "ChangeLog", "THANKS",
                           "TODO", "guide/*.txt", "lib/**/*.rb")
   rdoc.rdoc_files.exclude(/\bSCCS\b/,
                           "lib/rubymail/parser/*")
