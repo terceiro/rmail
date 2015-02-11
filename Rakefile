@@ -79,15 +79,8 @@ end
 #
 # These PKG_ variables are used by Rake's package rule.
 #
-PKG_VERSION = begin
-                version= IO.readlines('version').first.chomp
-                if version =~ /^\d+\.\d+\.\d+$/
-                  version.untaint
-                else
-                  fail "package version is bogus"
-                end
-                version
-              end
+require './lib/rmail/version.rb'
+PKG_VERSION = RMail::VERSION
 
 PKG_FILES = FileList.new('test/**/*',
                          'guide/**/*',
@@ -98,8 +91,7 @@ PKG_FILES = FileList.new('test/**/*',
                          'README',
                          'THANKS',
                          'TODO',
-                         'Rakefile',
-                         'version')
+                         'Rakefile')
 
 #
 # Teach Rake how to build the RDoc documentation for this package.
