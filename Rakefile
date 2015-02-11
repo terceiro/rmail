@@ -85,7 +85,6 @@ PKG_VERSION = RMail::VERSION
 PKG_FILES = FileList.new('test/**/*',
                          'guide/**/*',
                          'lib/**/*',
-                         'install.rb',
                          'ChangeLog',
                          'NOTES',
                          'README',
@@ -162,8 +161,11 @@ Gem::PackageTask.new(spec) do |pkg|
   pkg.need_tar = true
 end
 
-desc "Install RubyMail using the standard install.rb script"
-task :install do
-  ruby "install.rb"
+desc 'Makes a release'
+task :release => [:test, :package] do
+  sh 'git', 'tag', '-s', "v#{PKG_VERSION}"
+  sh 'git', 'push'
+  sh 'git', 'push', '--tags'
+  sh 'gem' 'push', 'pkg/#{rmail}-#{PKG_VERSION}.gem'
 end
 

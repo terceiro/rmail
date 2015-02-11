@@ -1,3 +1,17 @@
+= Changes in RubyMail 1.1.0 (released 2015-02-10)
+
+- This version contains fixes for running on Ruby 2.0+ that were contributed by
+  Josef Stribny, plus 7 patches that have accumulated in the Debian package of
+  rmail over the years by Adeodato Simó, Per Andersson, and Antonio Terceiro.
+  There are also a few fixes by the original author Matt Armstrong that never
+  made it into a release.
+- This version is mostly compatible with 1.0.0, but since it wasn't explicitly
+  tested on older RUby releases we bumping the minor version as a warning to
+  users.
+- Rakefile was updated to actually run on modern Ruby versions
+- The tests were fixed for Ruby 2.0+ compatibility
+- The version number was moved to lib/rmail/version.rb
+
 = Changes in RubyMail 1.0.0 (released 2008-01-05)
 
 - This version differs *only* in the changes required for Ruby 1.9
