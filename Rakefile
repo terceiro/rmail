@@ -19,7 +19,7 @@ task :default => :test
 # Test tasks
 #
 Rake::TestTask.new do |t|
-  t.libs << 'test'
+  t.libs << '.'
   t.pattern = 'test/test*.rb'
   t.verbose = true
 end
