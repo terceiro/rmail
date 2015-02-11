@@ -209,7 +209,12 @@ class TestRMailHeader < TestBase
     # Test the params argument
     h = RMail::Header.new
     h.add("name", "value", nil, 'param1' => 'value1', 'param2' => '+value2')
-    assert_equal('value; param1=value1; param2="+value2"', h['name'])
+    # Param order can not be guaranteed since they are given as dict to the
+    # function.
+    #assert_equal('value; param1=value1; param2="+value2"', h['name'])
+    header_check = (h['name'] == 'value; param1=value1; param2="+value2"' or
+                    h['name'] == 'value; param2="+value2"; param1=value1')
+    assert(header_check)
 
     h = RMail::Header.new
     h.add_raw("MIME-Version: 1.0")
