@@ -166,6 +166,6 @@ task :release => [:test, :package] do
   sh 'git', 'tag', '-s', "v#{PKG_VERSION}"
   sh 'git', 'push'
   sh 'git', 'push', '--tags'
-  sh 'gem' 'push', 'pkg/#{rmail}-#{PKG_VERSION}.gem'
+  sh 'gem', 'push', "pkg/#{rmail}-#{PKG_VERSION}.gem"
 end
 
