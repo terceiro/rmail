@@ -4,12 +4,8 @@
 # This is a Ruby file, used by the "rake" make-like program.
 #
 
-begin
-  # First, we use a few ruby things...
-  require 'rubygems'
-  require 'rake/gempackagetask'
-end
-require 'rake/rdoctask'
+require 'rubygems/package_task'
+require 'rdoc/task'
 require 'rake/testtask'
 require 'shellwords'
 
@@ -136,47 +132,42 @@ end
 #
 # Create a Gem::Specification right in the Rakefile, using some of the
 # variables we have set up above.
+spec = Gem::Specification.new do |s|
+  s.name = 'rmail'
+  s.version = PKG_VERSION + if can_release_package
+                              ''
+                            else
+                              '.666'
+                            end
+  s.summary = 'A MIME mail parsing and generation library.'
+  s.description = <<-EOF
+  RMail is a lightweight mail library containing various utility classes and
+  modules that allow ruby scripts to parse, modify, and generate MIME mail
+  messages.
+  EOF
+
+  s.files = PKG_FILES.to_a
+
+  s.required_ruby_version = Gem::Version::Requirement.new(">= 1.8.1")
+
+  s.has_rdoc = true
+  s.extra_rdoc_files = rdoc.rdoc_files.reject { |fn| fn =~ /\.rb$/ }.to_a
+  s.rdoc_options.concat([ '--title', rdoc.title, '--main', rdoc.main,
+                          rdoc.options ].flatten)
+
+  s.test_files = FileList['test/tc_*.rb'].to_a
+
+  s.author = ["Matt Armstrong", "Antonio Terceiro"]
+  s.email = "terceiro@softwarelivre.org"
+  s.homepage = "https://github.com/terceiro/rmail"
+end
+
 #
-if defined?(Gem)
-  spec = Gem::Specification.new do |s|
-    s.name = 'rmail'
-    s.version = PKG_VERSION + if can_release_package
-                                ''
-                              else
-                                '.666'
-                              end
-    s.summary = 'A MIME mail parsing and generation library.'
-    s.description = <<-EOF
-    RMail is a lightweight mail library containing various utility classes and
-    modules that allow ruby scripts to parse, modify, and generate MIME mail
-    messages.
-    EOF
-
-    s.files = PKG_FILES.to_a
-
-    s.required_ruby_version = Gem::Version::Requirement.new(">= 1.8.1")
-
-    s.has_rdoc = true
-    s.extra_rdoc_files = rdoc.rdoc_files.reject { |fn| fn =~ /\.rb$/ }.to_a
-    s.rdoc_options.concat([ '--title', rdoc.title, '--main', rdoc.main,
-                            rdoc.options ].flatten)
-
-    s.test_files = FileList['test/tc_*.rb'].to_a
-
-    s.author = "Matt Armstrong"
-    s.email = "matt@rfc20.org"
-    s.homepage = "http://www.rfc20.org/rubymail"
-
-    s.rubyforge_project = "rubymail"
-  end
-
-  #
-  # Use our Gem::Specification to make some package tasks.
-  #
-  Rake::GemPackageTask.new(spec) do |pkg|
-    pkg.need_zip = true
-    pkg.need_tar = true
-  end
+# Use our Gem::Specification to make some package tasks.
+#
+Gem::PackageTask.new(spec) do |pkg|
+  pkg.need_zip = true
+  pkg.need_tar = true
 end
 
 desc "Install RubyMail using the standard install.rb script"
