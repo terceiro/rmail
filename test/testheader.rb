@@ -781,6 +781,10 @@ EOF
     h.delete('content-type')
     h['content-type'] = ' foo/html   ; charset=ISO-8859-1'
     assert_equal("foo/html", h.content_type)
+
+    h = RMail::Header.new
+    h['content-type'] = ''
+    assert_equal(nil, h.content_type)
   end
 
   def test_media_type
