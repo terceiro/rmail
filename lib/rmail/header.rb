@@ -533,8 +533,9 @@ module RMail
     # executed and its return value is returned.  If no block is passed,
     # the value of the +default+ argument is returned.
     def content_type(default = nil)
-      if value = self['content-type']
-	value.strip.split(/\s*;\s*/)[0].downcase
+      content_type = self['content-type']
+      if content_type && content_type.length > 0
+	content_type.strip.split(/\s*;\s*/)[0].downcase
       else
 	if block_given?
           yield
