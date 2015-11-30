@@ -1,61 +1,40 @@
-= RubyMail
+# RubyMail
 
 This is RubyMail, a lightweight mail library containing various
 utility classes and modules that allow Ruby scripts to parse,
 modify, and generate MIME mail messages.
 
-= Requirements
+## Requirements
 
-Ruby 1.6.7 (or newer) or Ruby 1.8.*.  Only tested under Linux, should
-be fine under any Unix.
+Ruby 2.0 or newer is supported.
 
-= Documentation
+## Documentation
 
 The documentation is in RDoc format in the doc subdirectory.  Aside
 from the API reference, you will be interested in guide/Intro.txt and
 guide/TableOfContents.txt.
 
-= Install
+## Install
 
-Type the following while in the package directory:
+```bash
+gem install rmail
+```
 
-  ruby install.rb config
-  ruby install.rb setup
-  ruby install.rb install
+## Status
 
-You may need special permissions to execute the last line.  If you
-want to just install RubyMail to a custom location, just copy the
-rmail subdirectory manually.
+[![Build Status](https://travis-ci.org/terceiro/rmail.svg?branch=master)](https://travis-ci.org/terceiro/rmail)
 
-= Status
 
-This package works well, but I consider all API subject to change.
-
-I very much appreciate suggestions and comments, but please think
-twice about using this for production use just yet.
-
-= Tests?
+## Tests
 
 This package has a complete unit test suite (requires RubyUnit to
-run).  Currently all of my e-mail is processed by this library.
+run). 
 
-= Why?
+## Support
 
-It is fun.
+Read the docs or on any bugs, open an issue on our [issue tracker](https://github.com/terceiro/rmail/issues)
 
-One use for RubyMail is the RubyFilter package, available at:
-
-    http://www.lickey.com/rubyfilter/
-
-= Alternatives
-
-You might check out TMail as well.
-
-= Support
-
-To reach the author of RubyMail, send mail to matt@lickey.com.
-
-= License
+## License
 
  Copyright (C) 2001, 2002, 2003, 2004 Matt Armstrong.  All rights
  reserved.
