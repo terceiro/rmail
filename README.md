@@ -8,12 +8,6 @@ modify, and generate MIME mail messages.
 
 Ruby 2.0 or newer is supported.
 
-## Documentation
-
-The documentation is in RDoc format in the doc subdirectory.  Aside
-from the API reference, you will be interested in guide/Intro.txt and
-guide/TableOfContents.txt.
-
 ## Install
 
 ```bash
@@ -27,17 +21,21 @@ gem install rmail
 
 ## Tests
 
-This package has a complete unit test suite (requires RubyUnit to
-run). 
+This package has a complete unit test suite. To run it, just run `rake` under
+the top-level directory. When submitting patches, please make sure all the
+tests pass with your changes applied.
 
 ## Support
 
-Read the docs or on any bugs, open an issue on our [issue tracker](https://github.com/terceiro/rmail/issues)
+If you found a bug, or even if you think you did but is not completely sure,
+open an issue on the [issue tracker](https://github.com/terceiro/rmail/issues).
 
 ## License
 
- Copyright (C) 2001, 2002, 2003, 2004 Matt Armstrong.  All rights
- reserved.
+ Copyright (C) 2001, 2002, 2003, 2004 Matt Armstrong.
+ Copyright (C) 2015 Antonio Terceiro.
+ All rights reserved.
+
 
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are met:
