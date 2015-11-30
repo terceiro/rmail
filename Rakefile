@@ -87,7 +87,7 @@ PKG_FILES = FileList.new('test/**/*',
                          'lib/**/*',
                          'ChangeLog',
                          'NOTES',
-                         'README',
+                         'README.md',
                          'THANKS',
                          'TODO',
                          'Rakefile')
@@ -97,7 +97,7 @@ PKG_FILES = FileList.new('test/**/*',
 #
 rdoc = Rake::RDocTask.new do |rdoc|
   rdoc.main = 'README'
-  rdoc.rdoc_files.include("README", "ChangeLog", "THANKS",
+  rdoc.rdoc_files.include("README.md", "ChangeLog", "THANKS",
                           "TODO", "guide/*.txt", "lib/**/*.rb")
   rdoc.rdoc_files.exclude(/\bSCCS\b/,
                           "lib/rubymail/parser/*")
