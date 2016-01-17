@@ -1231,4 +1231,14 @@ EOF
     assert_equal(0, h.recipients.length)
   end
 
+  def test_invalid_encoding_utf8
+    _, value = RMail::Header::Field.parse('Subject: abgeändertes Angebot')
+    assert_equal 'abgeändertes Angebot', value
+  end
+
+  def test_invalid_encoding_iso_8859_1
+    _, value = RMail::Header::Field.parse('Subject: abgeändertes Angebot'.encode(Encoding::ISO_8859_1))
+    assert_equal 'abgeändertes Angebot'.encode(Encoding::ISO_8859_1), value
+  end
+
 end

@@ -73,7 +73,10 @@ module RMail
 
     class Field                 # :nodoc:
       # fixme, document methadology for this (RFC2822)
-      EXTRACT_FIELD_NAME_RE = /\A([^\x00-\x1f\x7f-\xff :]+):\s*/no
+
+      # accoring to RFC2822 the header field name can consist of any
+      # ASCII char between and including 33 and 126.
+      EXTRACT_FIELD_NAME_RE = /\A(^\w[-\w]+):\s*/o
 
       class << self
         def parse(field)
