@@ -1025,18 +1025,7 @@ EOF
     begin
       h = RMail::Header.new
       # This one is bogus and can't even be parsed.
-      h.add_raw("Date: 21/01/2002 09:29:33 Pacific Daylight Time")
-      t = assert_nothing_raised {
-        h.date
-      }
-      assert_nil(t)
-    end
-
-    begin
-      h = RMail::Header.new
-      # This time is out of the range that can be represented by a
-      # Time object.
-      h.add_raw("Date: Sun, 14 Jun 2065 05:51:55 +0200")
+      h.add_raw("Date: A long time ago")
       t = assert_nothing_raised {
         h.date
       }
