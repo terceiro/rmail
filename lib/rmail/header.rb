@@ -474,9 +474,9 @@ module RMail
     #
     # See also: #match
     def match?(name, value)
-      massage_match_args(name, value) { |name, value|
+      massage_match_args(name, value) { |mname, mvalue|
         match = detect {|n, v|
-          n =~ name && v =~ value
+          n =~ mname && v =~ mvalue
         }
         ! match.nil?
       }
@@ -507,10 +507,10 @@ module RMail
     #
     # See also: #match?
     def match(name, value)
-      massage_match_args(name, value) { |name, value|
+      massage_match_args(name, value) { |mname, mvalue|
         header = RMail::Header.new
         found = each { |n, v|
-          if n.downcase =~ name  &&  value =~ v
+          if n.downcase =~ mname  &&  mvalue =~ v
             header[n] = v
           end
         }
