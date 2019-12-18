@@ -46,6 +46,7 @@ module RMail
       @body = nil
       @epilogue = nil
       @preamble = nil
+      @delimiters = nil
     end
 
     # Test if this message is structured exactly the same as the other
