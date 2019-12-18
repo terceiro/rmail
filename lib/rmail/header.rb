@@ -136,10 +136,10 @@ module RMail
     end
 
     # Return the value of the first matching field of a field name, or
-    # nil if none found.  If passed a Fixnum, returns the header
+    # nil if none found.  If passed an Integer, returns the header
     # indexed by the number.
     def [](name_or_index)
-      if name_or_index.kind_of? Fixnum
+      if name_or_index.kind_of? Integer
         temp = @fields[name_or_index]
         temp = temp.value unless temp.nil?
       else
