@@ -74,7 +74,7 @@ module RMail
 
     def serialize_low(message, depth = 0)
       if message.multipart?
-        delimiters, delimiters_boundary = message.get_delimiters
+        delimiters, _delimiters_boundary = message.get_delimiters
         unless delimiters
           boundary = "\n--" + message.header.param('Content-Type', 'boundary')
           delimiters = Array.new(message.body.length + 1, boundary + "\n")

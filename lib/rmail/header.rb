@@ -509,7 +509,7 @@ module RMail
     def match(name, value)
       massage_match_args(name, value) { |mname, mvalue|
         header = RMail::Header.new
-        found = each { |n, v|
+        each { |n, v|
           if n.downcase =~ mname  &&  mvalue =~ v
             header[n] = v
           end
