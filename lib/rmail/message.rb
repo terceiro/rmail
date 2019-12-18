@@ -131,14 +131,14 @@ module RMail
     # Access the epilogue string for this message.  The epilogue
     # string is relevant only for multipart messages.  It is the text
     # that occurs after all parts of the message and is generally nil.
-    attr :epilogue, true
+    attr_accessor :epilogue
 
     # Access the preamble string for this message.  The preamble
     # string is relevant only for multipart messages.  It is the text
     # that occurs just before the first part of the message, and is
     # generally nil or simple English text describing the nature of
     # the message.
-    attr :preamble, true
+    attr_accessor :preamble
 
     # Returns the entire message in a single string.  This uses the
     # RMail::Serialize class.

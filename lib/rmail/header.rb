@@ -893,7 +893,7 @@ module RMail
 
     protected
 
-    attr :fields, true
+    attr_accessor :fields
 
     private
 
