@@ -141,7 +141,6 @@ spec = Gem::Specification.new do |s|
 
   s.required_ruby_version = Gem::Version::Requirement.new(">= 1.8.1")
 
-  s.has_rdoc = true
   s.extra_rdoc_files = rdoc.rdoc_files.reject { |fn| fn =~ /\.rb$/ }.to_a
   s.rdoc_options.concat([ '--title', rdoc.title, '--main', rdoc.main,
                           rdoc.options ].flatten)
