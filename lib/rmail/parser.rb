@@ -202,7 +202,6 @@ module RMail
     def parse_header(input, depth)
       data = nil
       header = nil
-      pushback = nil
       boundary = nil
       while chunk = input.read
         data ||= ''

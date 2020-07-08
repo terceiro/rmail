@@ -136,10 +136,10 @@ module RMail
     end
 
     # Return the value of the first matching field of a field name, or
-    # nil if none found.  If passed a Fixnum, returns the header
+    # nil if none found.  If passed an Integer, returns the header
     # indexed by the number.
     def [](name_or_index)
-      if name_or_index.kind_of? Fixnum
+      if name_or_index.kind_of? Integer
         temp = @fields[name_or_index]
         temp = temp.value unless temp.nil?
       else
@@ -474,9 +474,9 @@ module RMail
     #
     # See also: #match
     def match?(name, value)
-      massage_match_args(name, value) { |name, value|
+      massage_match_args(name, value) { |mname, mvalue|
         match = detect {|n, v|
-          n =~ name && v =~ value
+          n =~ mname && v =~ mvalue
         }
         ! match.nil?
       }
@@ -507,10 +507,10 @@ module RMail
     #
     # See also: #match?
     def match(name, value)
-      massage_match_args(name, value) { |name, value|
+      massage_match_args(name, value) { |mname, mvalue|
         header = RMail::Header.new
-        found = each { |n, v|
-          if n.downcase =~ name  &&  value =~ v
+        each { |n, v|
+          if n.downcase =~ mname  &&  mvalue =~ v
             header[n] = v
           end
         }
@@ -893,7 +893,7 @@ module RMail
 
     protected
 
-    attr :fields, true
+    attr_accessor :fields
 
     private
 

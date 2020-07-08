@@ -1129,13 +1129,13 @@ class TestRMailAddress < TestBase
     assert_equal(nil, addr.domain)
     assert_equal(nil, addr.local)
 
-    e = assert_raise(ArgumentError) {
+    assert_raise(ArgumentError) {
       RMail::Address.new(["bob"])
     }
-    e = assert_raise(ArgumentError) {
+    assert_raise(ArgumentError) {
       RMail::Address.new(Object.new)
     }
-    e = assert_raise(ArgumentError) {
+    assert_raise(ArgumentError) {
       RMail::Address.new(Hash.new)
     }
   end

@@ -81,11 +81,11 @@ module RMail
             end
           end
           chunk
-        when Fixnum
+        when Integer
           read_chunk(size)
         else
           raise ArgumentError,
-            "Read size (#{size.inspect}) must be a Fixnum or nil."
+            "Read size (#{size.inspect}) must be an Integer or nil."
         end
       end
 
@@ -102,7 +102,7 @@ module RMail
       # convenient to call from derived classes when super() isn't
       # easy to use.
       def standard_read_chunk(size)
-        unless size.is_a?(Fixnum) && size > 0
+        unless size.is_a?(Integer) && size > 0
           raise ArgumentError,
             "Read size (#{size.inspect}) must be greater than 0."
         end
@@ -132,11 +132,11 @@ module RMail
 
       # Set the chunk size of this reader in bytes.  This is useful
       # mainly for testing, though perhaps some operations could be
-      # optimized by tweaking this value.  The chunk size must be a
-      # Fixnum greater than 0.
+      # optimized by tweaking this value.  The chunk size must be an
+      # Integer greater than 0.
       def chunk_size=(size)
-        unless size.is_a?(Fixnum)
-          raise ArgumentError, "chunk size must be a Fixnum"
+        unless size.is_a?(Integer)
+          raise ArgumentError, "chunk size must be an Integer"
         end
         unless size >= 1
           raise ArgumentError, "invalid size #{size.inspect} given"
